@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto+Serif:opsz,wght@8..144,100&display=swap"
+    rel="stylesheet">
+  <style>
+    .text-dark {
+      background-image: linear-gradient(-290deg,
+          #231557 0%,
+          #44107a 29%,
+          #ff1361 67%,
+          #fff800 100%);
+      background-clip: border-box;
+      background-size: 50% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: animatedText 8s infinite linear;
+      font-size: 70px;
+
+    }
+
+    @keyframes animatedText {
+      to {
+        background-position: 200% center;
+      }
+    }
+
+    #accordionPanelsStayOpenExample {
+      padding-left: 165px;
+      padding-right: 165px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .circleBtn {
+      border-radius: 50%;
+      height: 55px;
+      width: 55px;
+    }
+
+    p {
+      font-size: 30px;
+    }
+
+    .btn {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bolder;
+    }
+
+    body {
+
+      background: linear-gradient(to right, #434343 0%, black 100%);
+      
+      margin: 20px;
+      font-family: 'Roboto Serif', serif;
+    }
+
+    * {
+      font-family: 'Roboto Serif', serif;
+      font-weight: 800 bold;
+    }
+
+    footer {
+      background-color: #F5F5F5;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+
+
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-around;
+      /* align-items: end; */
+      /* height: 40vh; */
+      /* border: 2px solid black; */
+      position: absolute;
+      /* bottom: 0;   */
+      width: 100%;
+
+      padding-top: 10px;
+    }
+
+    .footer-item {
+      flex: 1;
+    }
+
+    .footer-item h4 {
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .footer-item p,
+    .footer-item a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-item a:hover {
+      text-decoration: underline;
+    }
+
+    .subBox1,
+    .subBox2 {
+      display: flex;
+      justify-content: space-between;
+      width: 70vw;
+      padding: 2vw;
+    }
+
+
+
+
+    #editBtn {
+      border: 3px inset blue;
+      background-color: transparent;
+    }
+    #navigate{
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <br />
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" onclick="changeMode()"
+      checked>
+    <label class="form-check-label" for="flexSwitchCheckDefault">Change modes</label>
+  </div>
+  <br>
+  <center>
+    <h3 class="text-dark" style="
+              font-weight: bolder;
+              font-family: 'Courier New', Courier, monospace;
+            ">
+      My Digital Notebook
+    </h3>
+  </center>
+  <br />
+
+
+  <!--Subjects Button -->
+  <center>
+
+    <div class="subBox1">
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subOneNotes()"
+        style="padding-right: 6px;">
+        <button type="button" id="s1" class="btn" style="background-color: #ffd700;" data-text="Subject 1">Subject
+          1</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(1)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subTwoNotes()">
+        <button type="button" id="s2" class="btn " style="background-color: #ff1361;" data-text="Subject 2">Subject
+          2</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(2)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subThreeNotes()">
+        <button type="button" id="s3" class="btn " style="background-color: aqua;" data-text="Subject 3">Subject
+          3</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(3)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subFourNotes()">
+        <button type="button" id="s4" class="btn " style="background-color: coral;" data-text="Subject 4">Subject
+          4</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(4)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subFiveNotes()">
+        <button type="button" id="s5" class="btn " style="background-color:orchid ;" data-text="Subject 5">Subject
+          5</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(5)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+    </div>
+
+    <div class="subBox2">
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subSixNotes()">
+        <button type="button" id="s6" class="btn " style="background-color: #ff1361 ;" data-text="Subject 6">Subject
+          6</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(6)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subSevenNotes()">
+        <button type="button" id="s7" class="btn " style="background-color: #ffd700;" data-text="Subject 7">Subject
+          7</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(7)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subEightNotes()">
+        <button type="button" id="s8" class="btn " style="background-color:coral ;" data-text="Subject 8">Subject
+          8</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(8)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subNineNotes()">
+        <button type="button" id="s9" class="btn " style="background-color:orchid ;" data-text="Subject 9">Subject
+          9</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(9)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic example" onclick="subTenNotes()">
+        <button type="button" id="s10" class="btn " style="background-color: aqua;" data-text="Subject 10">Subject
+          10</button>
+        <button data-bs-toggle="modal" data-bs-target="#subjectModal" type="button" onclick="modalSub(10)"
+          class="material-symbols-outlined" id="editBtn">edit</button>
+      </div>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example" onclick="recycleBinNotes()">
+      <button type="button" id="s10" class="btn ">Recycle Bin</button>
+    </div>
+  </center>
+
+  <!-- Accordion  -->
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+
+    <!-- <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne"
+                aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne"
+              >
+                Accordion Item #1<span style="padding-left: 65vw;" class="material-symbols-outlined">
+                  edit
+                  </span><span style="padding-left: 1vw;" class="material-symbols-outlined">
+                  delete
+                  </span>
+              </button>
+            </h2>
+            <div
+              id="panelsStayOpen-collapseOne"
+              class="accordion-collapse collapse show"
+            >
+              <div class="accordion-body">
+                <strong>This is the first item's accordion body.</strong> It is
+                shown by default, until the collapse plugin adds the appropriate
+                classes that we use to style each element. These classes control the
+                overall appearance, as well as the showing and hiding via CSS
+                transitions. You can modify any of this with custom CSS or
+                overriding our default variables. It's also worth noting that just
+                about any HTML can go within the <code>.accordion-body</code>,
+                though the transition does limit overflow.
+              </div>
+    
+            </div> -->
+  </div>
+  <center>
+    <h1 id="navigate">Navigate to a particular subject</h1>
+  </center>
+
+  </div>
+
+  <!-- Button trigger modal -->
+  <center>
+    <button type="button" class="btn  circleBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <p>+</p>
+    </button>
+  </center>
+
+  <!-- Modal for accordion-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Write your note
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <span class="input-group-text">Question/Topic</span>
+            <textarea id="question" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-text">Answer/Note</span>
+            <textarea id="answer" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" onclick="formAccordion()" class="btn btn-primary" data-bs-dismiss="modal">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for edit accordion -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="editModalLabel">
+            Write your note
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <span class="input-group-text">Question/Topic</span>
+            <textarea id="ques" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+          <br />
+          <div class="input-group">
+            <span class="input-group-text">Answer/Note</span>
+            <textarea id="ans" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" onclick="editAccordion()" class="btn btn-primary" data-bs-dismiss="modal">
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for subject-->
+  <div class="modal fade" id="subjectModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Write your subject
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group">
+            <span class="input-group-text">Subject</span>
+            <textarea id="subject" class="form-control" aria-label="With textarea"></textarea>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" onclick="subjectSave()" class="btn btn-primary" data-bs-dismiss="modal">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="footer-container">
+
+    <div class="footer-item">
+      <hr style="color: white;">
+
+      <h4 style="color: white;">Contact Us</h4>
+      <p>Email: <a href="mailto:dgnotehelp@gmail.com">dgnotehelp@gmail.com</a></p>
+    </div>
+    <div class="footer-item">
+      <hr style="color: white;">
+
+      <h4 style="color: white;" >Created By</h4>
+      <p><a href="https://www.mahavirascoding.in" target="_blank">MahavirasCoding</a></p>
+    </div>
+    <div class="footer-item">
+      <hr width="500vw" style="color: white;">
+
+      <h4 style="color: white;" >Special Thanks</h4>
+      <p>AI Prime Students</p>
+    </div>
+  </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script>
+    function changeMode() {
+      var switchBtn = document.getElementById('flexSwitchCheckDefault');
+
+      if (switchBtn.checked) {
+
+      }
+      else {
+        window.location.href = 'digitalNotebook.html'
+      }
+    }
+
+    // SUBJECT RELATED:
+
+    var subListString = ""
+    var initialArray = []
+    var subjectId = 0
+    var subject = ""
+    var subArrayName = ["subOne", "subTwo", "subThree", "subFour", "subFive", "subSix", "subSeven", "subEight", "subNine", "subTen"]
+
+    if (localStorage.getItem('subject') != null) {
+      var subListArray = JSON.parse(localStorage.getItem('subject'))
+      initialArray = subListArray
+      for (i = 0; i < subListArray.length; i++) {
+        document.getElementById(`s${i + 1}`).innerHTML = subListArray[i]
+        document.getElementById(`s${i + 1}`).setAttribute("data-text", subListArray[i])
+      }
+    }
+    else {
+      initialArray = ["Subject 1", "Subject 2", "Subject 3", "Subject 4", "Subject 5", "Subject 6", "Subject 7", "Subject 8", "Subject 9", "Subject 10"]
+    }
+
+
+    function modalSub(subId) {
+      subjectId = subId
+    }
+
+    function subjectSave() {
+      var subName = document.getElementById("subject").value
+      document.getElementById(`s${subjectId}`).innerHTML = subName
+      initialArray[subjectId - 1] = subName
+      subListString = JSON.stringify(initialArray)
+      localStorage.setItem('subject', subListString)
+      // document.getElementById(`s${i + 1}`).innerHTML = subListArray[i]
+      // document.getElementById(`s${i + 1}`).setAttribute("data-text",subListArray[i])
+      document.getElementById(`s${subjectId}`).setAttribute("data-text", subName)
+    }
+
+    // ================================================================
+
+
+    // SUBJECT FUNCTIONS:
+
+    function subOneNotes() {
+      index = 0
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subOne"
+      if (localStorage.getItem('subOne') == "" || localStorage.getItem('subOne') == null) {
+        // 
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[0])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subOneString = localStorage.getItem(subject)
+        var subOneArray = JSON.parse(subOneString)
+        for (i = 0; i < subOneArray.length; i++) {
+          formAccordionLocalStorage(subOneArray[i].question, subOneArray[i].answer, subOneArray[i].id, subOneArray[i].qId)
+        }
+      }
+    }
+
+    function subTwoNotes() {
+      index = 1
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subTwo"
+
+      if (localStorage.getItem('subTwo') == "" || localStorage.getItem('subTwo') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[1])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+        var subTwoString = localStorage.getItem('subTwo')
+        var subTwoArray = JSON.parse(subTwoString)
+        for (i = 0; i < subTwoArray.length; i++) {
+          formAccordionLocalStorage(subTwoArray[i].question, subTwoArray[i].answer, subTwoArray[i].id, subTwoArray[i].qId)
+        }
+      }
+    }
+
+    function subThreeNotes() {
+      index = 2
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subThree"
+
+      if (localStorage.getItem('subThree') == "" || localStorage.getItem('subThree') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[2])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subThreeString = localStorage.getItem('subThree')
+        var subThreeArray = JSON.parse(subThreeString)
+        for (i = 0; i < subThreeArray.length; i++) {
+          formAccordionLocalStorage(subThreeArray[i].question, subThreeArray[i].answer, subThreeArray[i].id, subThreeArray[i].qId)
+        }
+      }
+    }
+
+    function subFourNotes() {
+      index = 3
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subFour"
+
+      if (localStorage.getItem('subFour') == "" || localStorage.getItem('subFour') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[3])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subFourString = localStorage.getItem('subFour')
+        var subFourArray = JSON.parse(subFourString)
+        for (i = 0; i < subFourArray.length; i++) {
+          formAccordionLocalStorage(subFourArray[i].question, subFourArray[i].answer, subFourArray[i].id, subFourArray[i].qId)
+        }
+      }
+    }
+
+    function subFiveNotes() {
+      index = 4
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subFive"
+
+      if (localStorage.getItem('subFive') == "" || localStorage.getItem('subFive') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[4])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subFiveString = localStorage.getItem('subFive')
+        var subFiveArray = JSON.parse(subFiveString)
+        for (i = 0; i < subFiveArray.length; i++) {
+          formAccordionLocalStorage(subFiveArray[i].question, subFiveArray[i].answer, subFiveArray[i].id, subFiveArray[i].qId)
+        }
+      }
+    }
+
+    function subSixNotes() {
+      index = 5
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subSix"
+
+      if (localStorage.getItem('subSix') == "" || localStorage.getItem('subSix') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[5])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subSixString = localStorage.getItem('subSix')
+        var subSixArray = JSON.parse(subSixString)
+        for (i = 0; i < subSixArray.length; i++) {
+          formAccordionLocalStorage(subSixArray[i].question, subSixArray[i].answer, subSixArray[i].id, subSixArray[i].qId)
+        }
+      }
+    }
+
+    function subSevenNotes() {
+      index = 6
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subSeven"
+
+      if (localStorage.getItem('subSeven') == "" || localStorage.getItem('subSeven') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[6])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subSevenString = localStorage.getItem('subSeven')
+        var subSevenArray = JSON.parse(subSevenString)
+        for (i = 0; i < subSevenArray.length; i++) {
+          formAccordionLocalStorage(subSevenArray[i].question, subSevenArray[i].answer, subSevenArray[i].id, subSevenArray[i].qId)
+        }
+      }
+    }
+
+    function subEightNotes() {
+      index = 7
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subEight"
+
+      if (localStorage.getItem('subEight') == "" || localStorage.getItem('subEight') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[7])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subEightString = localStorage.getItem('subEight')
+        var subEightArray = JSON.parse(subEightString)
+        for (i = 0; i < subEightArray.length; i++) {
+          formAccordionLocalStorage(subEightArray[i].question, subEightArray[i].answer, subEightArray[i].id, subEightArray[i].qId)
+        }
+      }
+    }
+
+    function subNineNotes() {
+      index = 8
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subNine"
+
+      if (localStorage.getItem('subNine') == "" || localStorage.getItem('subNine') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[8])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subNineString = localStorage.getItem('subNine')
+        var subNineArray = JSON.parse(subNineString)
+        for (i = 0; i < subNineArray.length; i++) {
+          formAccordionLocalStorage(subNineArray[i].question, subNineArray[i].answer, subNineArray[i].id, subNineArray[i].qId)
+        }
+      }
+    }
+
+    function subTenNotes() {
+      index = 9
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "subTen"
+
+      if (localStorage.getItem('subTen') == "" || localStorage.getItem('subTen') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode(initialArray[9])
+        var centerText2 = document.createTextNode("You have not yet stored any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var subTenString = localStorage.getItem('subTen')
+        var subTenArray = JSON.parse(subTenString)
+        for (i = 0; i < subTenArray.length; i++) {
+          formAccordionLocalStorage(subTenArray[i].question, subTenArray[i].answer, subTenArray[i].id, subTenArray[i].qId)
+        }
+      }
+    }
+
+    // ================================================================
+
+    // NOTES RELATED:
+
+    var counter = Math.random()
+    var index = -1
+    var uniqueId = ""
+    var uniqueQuestionId = ""
+    var uniqueContainerId = ""
+
+    function editAccordion() {
+      var q = document.getElementById("ques").value;
+      var a = document.getElementById("ans").value;
+      document.getElementById(uniqueQuestionId).childNodes[0].textContent = q
+      document.getElementById(uniqueId).childNodes[0].childNodes[0].textContent = a
+      var elements = localStorage.getItem(subject)
+      var arrayElements = JSON.parse(elements)
+      for (i = 0; i < arrayElements.length; i++) {
+        if (arrayElements[i].id == uniqueId) {
+          arrayElements[i].question = q;
+          arrayElements[i].answer = a;
+        }
+      }
+      var newElements = JSON.stringify(arrayElements)
+      localStorage.setItem(subject, newElements)
+    }
+
+    // function deleteAccordion() {
+    //   document.getElementById(uniqueContainerId).display = 'none'
+    // var elements = localStorage.getItem(subject)
+    //   var arrayElements = JSON.parse(elements)
+
+    //   for(i = 0 ;i<arrayElements.length;i++){
+    //     if(arrayElements[i].id == uniqueId){
+    //         arrayElements.splice(i,1)
+    //     }
+    //   }
+    //   var newElements = JSON.stringify(arrayElements)
+    //   localStorage.setItem(subject,newElements)
+    // }
+
+    function formAccordion() { //latest note add
+      var q = document.getElementById("question").value;
+      var a = document.getElementById("answer").value;
+      while (document.getElementById(`${subject, counter}`) != null) {
+        counter = Math.random()
+      }
+      var elementAccordion = document.createElement("div");
+      elementAccordion.setAttribute("class", "accordion-item");
+      elementAccordion.setAttribute('id', `c${subject, counter}`)
+      var header = document.createElement("h2");
+      header.setAttribute("class", "accordion-header");
+
+      var button = document.createElement('button')
+      button.setAttribute("class", "accordion-button collapsed");
+      button.setAttribute("type", "button");
+      button.setAttribute("data-bs-toggle", "collapse");
+
+      button.setAttribute('id', `q${subject, counter}`)
+      button.setAttribute("data-bs-target", `#${subject, counter}`);
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-controls", `${subject, counter}`);
+
+
+
+
+      var edit = document.createElement('span')
+      edit.setAttribute('class', 'material-symbols-outlined')
+
+
+
+
+
+
+      // edit.style.paddingLeft = '65vw'
+      edit.textContent = "edit"
+      edit.setAttribute('data-bs-toggle', 'modal')
+      edit.setAttribute('data-bs-target', '#editModal')
+      edit.onclick = function () {
+        uniqueId = `${subject, counter}`
+        uniqueQuestionId = `q${subject, counter}`
+        document.getElementById('ques').value = q
+        document.getElementById('ans').value = a
+      }
+      var deleted = document.createElement('span')
+      deleted.setAttribute('class', 'material-symbols-outlined')
+      deleted.style.paddingLeft = '1vw'
+      deleted.textContent = "delete"
+      deleted.onclick = function () {
+        uniqueContainerId = `c${id}`
+        document.getElementById(uniqueContainerId).style.display = 'none'
+        var elements = localStorage.getItem(subject)
+        var arrayElements = JSON.parse(elements)
+        for (i = 0; i < arrayElements.length; i++) {
+          console.log(6)
+          if ("c" + arrayElements[i].id == uniqueContainerId) {
+
+
+            arrayElements.splice(i, 1)
+
+          }
+        }
+        var newElements = JSON.stringify(arrayElements)
+        localStorage.setItem(subject, newElements)
+      }
+      // var newElements = JSON.stringify(arrayElements)
+      // localStorage.setItem(subject,newElements)
+      var div2 = document.createElement('div')
+      div2.setAttribute("id", `${subject, counter}`);
+      div2.setAttribute("class", "accordion-collapse collapse ");
+      var mainBody = document.createElement('div') //here our note content will go
+      mainBody.setAttribute("class", "accordion-body")
+      extractInputAndAdd(button, mainBody)
+      div2.appendChild(mainBody)
+      header.appendChild(button)
+      button.appendChild(edit)
+      button.appendChild(deleted)
+      elementAccordion.appendChild(header)
+      elementAccordion.appendChild(div2)
+      var accordionContainer = document.getElementById('accordionPanelsStayOpenExample')
+      accordionContainer.appendChild(elementAccordion)
+      counter = Math.random()
+      var subjectString = localStorage.getItem(subject)
+      if (subjectString == "" || subjectString == null) {
+        var subjectArray = []
+      }
+      else {
+        var subjectArray = JSON.parse(subjectString)
+      }
+      var note = {
+        question: `${q}`,
+        answer: `${a}`,
+        id: `${subject, counter}`,
+        qId: `q${subject, counter}`
+      }
+      subjectArray.push(note)
+      subjectString = JSON.stringify(subjectArray)
+      localStorage.setItem(subject, subjectString)
+      document.getElementById("question").value = '';
+      document.getElementById("answer").value = '';
+      if (subject == 'subOne') {
+        subOneNotes()
+      }
+      if (subject == 'subTwo') {
+        subTwoNotes()
+      }
+      if (subject == 'subThree') {
+        subThreeNotes()
+      }
+      if (subject == 'subFour') {
+        subFourNotes()
+      }
+      if (subject == 'subFive') {
+        subFiveNotes()
+      }
+      if (subject == 'subSix') {
+        subSixNotes()
+      }
+      if (subject == 'subSeven') {
+        subSevenNotes()
+      }
+      if (subject == 'subEight') {
+        subEightNotes()
+      }
+      if (subject == 'subNine') {
+        subNineNotes()
+      }
+      if (subject == 'subTen') {
+        subTenNotes()
+      }
+
+    }
+
+    function formAccordionLocalStorage(question, answer, id, qId) {
+      var elementAccordion = document.createElement("div");
+      elementAccordion.setAttribute("class", "accordion-item");
+      elementAccordion.setAttribute('id', `c${id}`)
+      var header = document.createElement("h2");
+      header.setAttribute("class", "accordion-header");
+      var button = document.createElement('button')
+      button.setAttribute("class", "accordion-button collapsed");
+      button.setAttribute('id', qId)
+      button.setAttribute("type", "button");
+      button.setAttribute("data-bs-toggle", "collapse");
+      button.setAttribute("data-bs-target", `#${id}`);
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-controls", id);
+      var edit = document.createElement('span')
+      edit.setAttribute('class', 'material-symbols-outlined')
+      // edit.style.paddingLeft = '65vw'
+      edit.textContent = "edit"
+      edit.setAttribute('data-bs-toggle', 'modal')
+      edit.setAttribute('data-bs-target', '#editModal')
+      edit.onclick = function () {
+        uniqueId = id
+        uniqueQuestionId = qId
+        document.getElementById('ques').value = question
+        document.getElementById('ans').value = answer
+      }
+      var deleted = document.createElement('span')
+      deleted.setAttribute('class', 'material-symbols-outlined')
+      deleted.style.paddingLeft = '1vw'
+      deleted.textContent = "delete"
+      deleted.onclick = function () {
+        uniqueContainerId = `c${id}`
+        document.getElementById(uniqueContainerId).style.display = 'none'
+        var elements = localStorage.getItem(subject)
+        var arrayElements = JSON.parse(elements)
+        console.log(arrayElements)
+        for (i = 0; i < arrayElements.length; i++) {
+          // console.log(arrayElements[i])
+          if ("c" + arrayElements[i].id == uniqueContainerId) {
+            console.log(arrayElements[i])
+            var sName = ""
+
+            for (j = 0; j < subArrayName.length; j = j + 1) {
+              if (subject == subArrayName[j]) {
+
+                sName = initialArray[j]
+              }
+            }
+            console.log(arrayElements[i])
+            // console.log(uniqueContainerId)
+            console.log(sName)
+            console.log(index)
+            var deletedNote = {
+              index: index,
+              subject: sName,
+              question: arrayElements[i].question,
+              answer: arrayElements[i].answer,
+              id: arrayElements[i].id,
+              qId: arrayElements[i].qId
+            }
+            console.log(3)
+            var binString = localStorage.getItem('recycleBin')
+            if (binString == "" || binString == null) {
+              var binArray = []
+            }
+            else {
+              var binArray = JSON.parse(binString)
+            }
+            console.log(2)
+            binArray.push(deletedNote)
+            binString = JSON.stringify(binArray)
+            localStorage.setItem('recycleBin', binString)
+
+            arrayElements.splice(i, 1)
+          }
+        }
+        var newElements = JSON.stringify(arrayElements)
+        localStorage.setItem(subject, newElements)
+      }
+
+      var questionContent = document.createTextNode(question)
+      button.appendChild(questionContent)
+      button.appendChild(edit)
+      button.appendChild(deleted)
+      var div2 = document.createElement('div')
+      div2.setAttribute("id", id);
+      div2.setAttribute("class", "accordion-collapse collapse ");
+      var mainBody = document.createElement('div') //here our note content will go
+      mainBody.setAttribute("class", "accordion-body")
+
+      var answerContent = document.createTextNode(answer)
+      mainBody.appendChild(answerContent)
+      div2.appendChild(mainBody)
+      header.appendChild(button)
+
+      elementAccordion.appendChild(header)
+      elementAccordion.appendChild(div2)
+      var accordionContainer = document.getElementById('accordionPanelsStayOpenExample')
+      accordionContainer.appendChild(elementAccordion)
+    }
+
+    function extractInputAndAdd(button, mainBody) {
+      var question = document.getElementById("question").value;
+      var answer = document.getElementById("answer").value;
+      var questionContent = document.createTextNode(question)
+      button.appendChild(questionContent)
+      var answerContent = document.createTextNode(answer)
+      mainBody.appendChild(answerContent)
+    }
+
+    // ================================================================
+
+
+    // RECYCLE BIN RELATED:
+
+    function recycleBinNotes() {
+      document.getElementById('accordionPanelsStayOpenExample').innerHTML = ""
+      subject = "recycleBin"
+
+      if (localStorage.getItem('recycleBin') == "" || localStorage.getItem('recycleBin') == null) {
+        // You have not yet stored any notes
+        var centerTag = document.createElement('center')
+        var newLine = document.createElement('br')
+        var centerText = document.createTextNode('Recycle Bin')
+        var centerText2 = document.createTextNode("You have not yet deleted any notes")
+        centerTag.appendChild(centerText)
+        centerTag.appendChild(newLine)
+        centerTag.appendChild(centerText2)
+        document.getElementById('accordionPanelsStayOpenExample').appendChild(centerTag)
+      }
+      else {
+
+        var recycleBinString = localStorage.getItem('recycleBin')
+        var recycleBinArray = JSON.parse(recycleBinString)
+        for (i = 0; i < recycleBinArray.length; i++) {
+          formAccordionRecycleBin(recycleBinArray[i].index, recycleBinArray[i].subject, recycleBinArray[i].question, recycleBinArray[i].answer, recycleBinArray[i].id, recycleBinArray[i].qId)
+        }
+      }
+    }
+
+    function formAccordionRecycleBin(index, sName, question, answer, id, qId) {
+      // console.log(sName)
+      var elementAccordion = document.createElement("div");
+      elementAccordion.setAttribute("class", "accordion-item");
+      elementAccordion.setAttribute('id', `c${id}`)
+      var header = document.createElement("h2");
+      header.setAttribute("class", "accordion-header");
+      var button = document.createElement('button')
+      button.setAttribute("class", "accordion-button collapsed");
+      button.setAttribute('id', qId)
+      button.setAttribute("type", "button");
+      button.setAttribute("data-bs-toggle", "collapse");
+      button.setAttribute("data-bs-target", `#${id}`);
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-controls", id);
+      var restore = document.createElement('span')
+      restore.setAttribute('class', 'material-symbols-outlined')
+      // edit.style.paddingLeft = '65vw'
+      restore.textContent = "settings_backup_restore"
+      // restore.setAttribute('data-bs-toggle','modal')
+      // restore.setAttribute('data-bs-target','#editModal')
+      restore.onclick = function () {
+        // document.getElementById(`c${id}`).style.display = 'none'   
+        var subjectName = subArrayName[index]
+        console.log(index)
+        var allNotesString = localStorage.getItem(subjectName)
+        console.log(allNotesString)
+        var allNotesArray = JSON.parse(allNotesString)
+        var restoredNote = {
+          question: question,
+          answer: answer,
+          id: id,
+          qId: qId
+        }
+        console.log(allNotesArray)
+        allNotesArray.push(restoredNote)
+        var stringNotes = JSON.stringify(allNotesArray)
+        localStorage.setItem(subjectName, stringNotes)
+        uniqueContainerId = `c${id}`
+        document.getElementById(uniqueContainerId).style.display = 'none'
+        var elements = localStorage.getItem(subject)
+        var arrayElements = JSON.parse(elements)
+        console.log(arrayElements)
+        for (i = 0; i < arrayElements.length; i++) {
+          // console.log(arrayElements[i])
+          if ("c" + arrayElements[i].id == uniqueContainerId) {
+            console.log(arrayElements[i])
+            var sName = ""
+            for (j = 0; j < subArrayName.length; j = j + 1) {
+              if (subject == subArrayName[j]) {
+                sName = initialArray[j]
+              }
+            }
+            console.log(arrayElements[i])
+            // console.log(uniqueContainerId)
+            var deletedNote = {
+              subject: sName,
+              question: arrayElements[i].question,
+              answer: arrayElements[i].answer,
+              id: arrayElements[i].id,
+              qId: arrayElements[i].qId
+            }
+            console.log(3)
+            var binString = localStorage.getItem('recycleBin')
+            if (binString == "" || binString == null) {
+              var binArray = []
+            }
+            else {
+              var binArray = JSON.parse(binString)
+            }
+            console.log(2)
+            binArray.push(deletedNote)
+            binString = JSON.stringify(binArray)
+            localStorage.setItem('recycleBin', binString)
+
+            arrayElements.splice(i, 1)
+          }
+        }
+        var newElements = JSON.stringify(arrayElements)
+        localStorage.setItem(subject, newElements)
+      }
+      var deleted = document.createElement('span')
+      deleted.setAttribute('class', 'material-symbols-outlined')
+      deleted.style.paddingLeft = '1vw'
+      deleted.textContent = "delete"
+      deleted.onclick = function () {
+        var c = confirm("The note will be permanently deleted. Do you wish to continue?")
+        if (c == true) {
+          uniqueContainerId = `c${id}`
+          document.getElementById(uniqueContainerId).style.display = 'none'
+          var elements = localStorage.getItem(subject)
+          var arrayElements = JSON.parse(elements)
+          console.log(arrayElements)
+          for (i = 0; i < arrayElements.length; i++) {
+            // console.log(arrayElements[i])
+            if ("c" + arrayElements[i].id == uniqueContainerId) {
+              console.log(arrayElements[i])
+              var sName = ""
+              for (j = 0; j < subArrayName.length; j = j + 1) {
+                if (subject == subArrayName[j]) {
+                  sName = initialArray[j]
+                }
+              }
+              console.log(arrayElements[i])
+              // console.log(uniqueContainerId)
+              var deletedNote = {
+                subject: sName,
+                question: arrayElements[i].question,
+                answer: arrayElements[i].answer,
+                id: arrayElements[i].id,
+                qId: arrayElements[i].qId
+              }
+              console.log(3)
+              var binString = localStorage.getItem('recycleBin')
+              if (binString == "" || binString == null) {
+                var binArray = []
+              }
+              else {
+                var binArray = JSON.parse(binString)
+              }
+              console.log(2)
+              binArray.push(deletedNote)
+              binString = JSON.stringify(binArray)
+              localStorage.setItem('recycleBin', binString)
+
+              arrayElements.splice(i, 1)
+            }
+          }
+          var newElements = JSON.stringify(arrayElements)
+          localStorage.setItem(subject, newElements)
+        }
+      }
+      var questionContent = document.createTextNode(sName + " - " + question)
+      button.appendChild(questionContent)
+      button.appendChild(restore)
+      button.appendChild(deleted)
+      var div2 = document.createElement('div')
+      div2.setAttribute("id", id);
+      div2.setAttribute("class", "accordion-collapse collapse ");
+      var mainBody = document.createElement('div') //here our note content will go
+      mainBody.setAttribute("class", "accordion-body")
+
+      var answerContent = document.createTextNode(answer)
+      mainBody.appendChild(answerContent)
+      div2.appendChild(mainBody)
+      header.appendChild(button)
+
+      elementAccordion.appendChild(header)
+      elementAccordion.appendChild(div2)
+      var accordionContainer = document.getElementById('accordionPanelsStayOpenExample')
+      accordionContainer.appendChild(elementAccordion)
+    }
+
+    // ================================================================
+
+  </script>
+</body>
+
+</html>
+
+<!-- Problem- /n not encountering -->
+<!-- accordion always closed -->
